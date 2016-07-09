@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec::Matchers.define :inherit_from do |superclass|
   match do |klass|
     klass.ancestors.include?(superclass)
@@ -12,4 +13,3 @@ RSpec::Matchers.define :inherit_from do |superclass|
     "Expected #{klass} not to inherit from #{superclass}"
   end
 end
-
