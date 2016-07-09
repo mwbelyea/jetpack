@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Jetpack</title>
+    <title><%= full_title(yield(:title)) %></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body data-controller=<%= controller_name %> data-action=<%= action_name %>>
+    <% if flash.any? %>
+      <% flash.each do |type, message| %>
+        <%= content_tag :div, message, class: "flash-#{type}" %>
+      <% end %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
